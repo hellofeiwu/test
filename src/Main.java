@@ -20,10 +20,18 @@ public class Main {
 //        binarySearchTree.preTraverse(binarySearchTree.getRoot());
         //TreeNode tree = binarySearchTree.removeNode(binarySearchTree.getRoot(), 23);
         //binarySearchTree.preTraverse(tree);
-        ArrayList arrayList = new ArrayList<>();
-        arr = new int[5];
-        arr[0] = 10;
-        insertElementIntoArray(arr, 1, 2);
+//        ArrayList arrayList = new ArrayList<>();
+//        arr = new int[5];
+//        arr[0] = 10;
+//        insertElementIntoArray(arr, 1, 2);
+
+        MyArray arr = new MyArray(20);
+        for(int i=0; i<6; i++) {
+            arr.addToLast(i);
+        }
+        arr.set(1, 9);
+        arr.add(6, 5);
+        System.out.println(arr);
     }
 
     public static String insertElementIntoArray(int[] arr, int j, int e) {
