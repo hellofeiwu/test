@@ -30,7 +30,8 @@ public class Main {
             arr.addToLast(i);
         }
         arr.set(1, 9);
-        arr.add(6, 5);
+        arr.add(3, 5);
+        arr.removeElement(4);
         System.out.println(arr);
     }
 

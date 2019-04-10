@@ -81,6 +81,37 @@ public class MyArray {
         size++;
     }
 
+    public int remove(int index) {
+        if(index < 0 || index >= size) {
+            throw new IllegalArgumentException("remove failed, index is out of bounds");
+        }
+
+        int temp = data[index];
+
+        for(int i=index+1; i<size; i++) {
+            data[i-1] = data[i];
+        }
+        size --;
+        return temp;
+    }
+
+    public int removeFirst() {
+        return remove(0);
+    }
+
+    public int removeLast() {
+        return remove(size-1);
+    }
+
+    public boolean removeElement(int e) {
+        int index = find(e);
+        if(index == -1) {
+            return false;
+        }
+        remove(index);
+        return true;
+    }
+
     @Override
     public String toString() {
         StringBuilder result = new StringBuilder();
