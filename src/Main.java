@@ -32,6 +32,12 @@ public class Main {
         arr.set(1, 9);
         arr.add(3, 5);
         arr.removeElement(4);
+
+        Vehicle car0 = new Vehicle("ford", 7);
+        Vehicle car1 = new Vehicle("lincoln", 5);
+
+        arr.set(0, car0);
+        arr.addToLast(car1);
         System.out.println(arr);
     }
 

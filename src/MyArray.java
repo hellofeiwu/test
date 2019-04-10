@@ -1,12 +1,12 @@
 /**
  * Created by FWU31 on 4/9/2019.
  */
-public class MyArray {
-    private int[] data;
+public class MyArray<E> {
+    private E[] data;
     private int size;
 
     public MyArray(int capacity) {
-        data = new int[capacity];
+        data = (E[]) new Object[capacity];
         size = 0;
     }
 
@@ -26,47 +26,47 @@ public class MyArray {
         return size == 0;
     }
 
-    public boolean exist(int e) {
+    public boolean exist(E e) {
         for(int i=0; i<data.length; i++) {
-            if(data[i] == e) {
+            if(data[i].equals(e)) {
                 return true;
             }
         }
         return false;
     }
 
-    public int find(int e) {
+    public int find(E e) {
         for(int i=0; i<data.length; i++) {
-            if(data[i] == e) {
+            if(data[i].equals(e)) {
                 return i;
             }
         }
         return -1;
     }
 
-    public int get(int index) {
+    public E get(int index) {
         if(index < 0 || index > size) {
             throw new IllegalArgumentException("index is out of bounds");
         }
         return data[index];
     }
 
-    public void set(int index, int e) {
+    public void set(int index, E e) {
         if(index < 0 || index > size) {
             throw new IllegalArgumentException("index is out of bounds");
         }
         data[index] = e;
     }
 
-    public void addToLast(int e) {
+    public void addToLast(E e) {
         add(size, e);
     }
 
-    public void addToFirst(int e) {
+    public void addToFirst(E e) {
         add(0, e);
     }
 
-    public void add(int index, int e) {
+    public void add(int index, E e) {
         if(size == data.length) {
             throw new IllegalArgumentException("add failed, the array is full");
         }
@@ -81,12 +81,12 @@ public class MyArray {
         size++;
     }
 
-    public int remove(int index) {
+    public E remove(int index) {
         if(index < 0 || index >= size) {
             throw new IllegalArgumentException("remove failed, index is out of bounds");
         }
 
-        int temp = data[index];
+        E temp = data[index];
 
         for(int i=index+1; i<size; i++) {
             data[i-1] = data[i];
@@ -95,15 +95,15 @@ public class MyArray {
         return temp;
     }
 
-    public int removeFirst() {
+    public E removeFirst() {
         return remove(0);
     }
 
-    public int removeLast() {
+    public E removeLast() {
         return remove(size-1);
     }
 
-    public boolean removeElement(int e) {
+    public boolean removeElement(E e) {
         int index = find(e);
         if(index == -1) {
             return false;
