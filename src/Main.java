@@ -26,13 +26,12 @@ public class Main {
 //        insertElementIntoArray(arr, 1, 2);
 
         MyArray arr = new MyArray();
-        for(int i=0; i<10; i++) {
+        for(int i=0; i<1; i++) {
             arr.addToLast(i);
         }
-        System.out.println(arr);
-        arr.add(3, 5);
-        System.out.println(arr);
         arr.removeLast();
+        System.out.println(arr);
+        arr.addToLast(10);
         System.out.println(arr);
     }
 
