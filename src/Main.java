@@ -25,19 +25,14 @@ public class Main {
 //        arr[0] = 10;
 //        insertElementIntoArray(arr, 1, 2);
 
-        MyArray arr = new MyArray(20);
-        for(int i=0; i<6; i++) {
+        MyArray arr = new MyArray();
+        for(int i=0; i<10; i++) {
             arr.addToLast(i);
         }
-        arr.set(1, 9);
+        System.out.println(arr);
         arr.add(3, 5);
-        arr.removeElement(4);
-
-        Vehicle car0 = new Vehicle("ford", 7);
-        Vehicle car1 = new Vehicle("lincoln", 5);
-
-        arr.set(0, car0);
-        arr.addToLast(car1);
+        System.out.println(arr);
+        arr.removeLast();
         System.out.println(arr);
     }
 
