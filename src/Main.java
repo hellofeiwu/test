@@ -24,13 +24,7 @@ public class Main {
 //        arr = new int[5];
 //        arr[0] = 10;
 //        insertElementIntoArray(arr, 1, 2);
-        MyArrayStack stack = new MyArrayStack(20);
-        for(int i=0; i<5; i++) {
-            stack.push(i);
-            System.out.println(stack);
-        }
-        stack.pop();
-        System.out.println(stack);
+        System.out.println(isValidParenthesesPair("{{}}"));
     }
 
     public static String insertElementIntoArray(int[] arr, int j, int e) {
@@ -48,5 +42,26 @@ public class Main {
             System.out.print(" " + arr[i]);
         }
         return "ok";
+    }
+
+    public static boolean isValidParenthesesPair(String s) {
+        Stack<Character> stack = new ArrayStack<>();
+        for(int i=0; i<s.length(); i++) {
+            Character c = s.charAt(i);
+            if(c == '(' || c == '[' || c == '{') {
+                stack.push(c);
+            }else {
+                if(stack.isEmpty()) {
+                    return false;
+                }
+                Character topChar = stack.pop();
+                if((c == ')' && topChar != '(')
+                || (c == ']' && topChar != '[')
+                || (c == '}' && topChar != '{')) {
+                    return false;
+                }
+            }
+        }
+        return stack.isEmpty();
     }
 }
