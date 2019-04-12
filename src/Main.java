@@ -24,15 +24,13 @@ public class Main {
 //        arr = new int[5];
 //        arr[0] = 10;
 //        insertElementIntoArray(arr, 1, 2);
-
-        MyArray arr = new MyArray();
-        for(int i=0; i<1; i++) {
-            arr.addToLast(i);
+        Stack stack = new ArrayStack(20);
+        for(int i=0; i<5; i++) {
+            stack.push(i);
+            System.out.println(stack);
         }
-        arr.removeLast();
-        System.out.println(arr);
-        arr.addToLast(10);
-        System.out.println(arr);
+        stack.pop();
+        System.out.println(stack);
     }
 
     public static String insertElementIntoArray(int[] arr, int j, int e) {
