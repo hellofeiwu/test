@@ -24,7 +24,7 @@ public class Main {
 //        arr = new int[5];
 //        arr[0] = 10;
 //        insertElementIntoArray(arr, 1, 2);
-        Stack stack = new ArrayStack(20);
+        MyArrayStack stack = new MyArrayStack(20);
         for(int i=0; i<5; i++) {
             stack.push(i);
             System.out.println(stack);
