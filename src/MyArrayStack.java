@@ -26,7 +26,7 @@ public class MyArrayStack<E> extends MyArray<E> {
                 result.append(",");
             }
         }
-        result.append("]");
+        result.append("]top");
         return result.toString();
     }
 }

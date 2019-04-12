@@ -48,7 +48,7 @@ public class ArrayStack<E> implements Stack<E> {
                 result.append(",");
             }
         }
-        result.append("]");
+        result.append("]top");
         return result.toString();
     }
 }
