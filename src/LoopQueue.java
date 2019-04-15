@@ -34,7 +34,7 @@ public class LoopQueue<E> implements Queue<E> {
         E result = data[front];
         front = (front + 1) % data.length;
         size--;
-        if(size <= getCapacity()/4) {
+        if(size <= getCapacity()/4 && getCapacity()/2 != 0) {
             resize(getCapacity()/2);
         }
         return result;
@@ -84,12 +84,14 @@ public class LoopQueue<E> implements Queue<E> {
     }
 
     public static void main(String[] args) {
-        Queue<Integer> queue = new LoopQueue<>(3);
-        for(int i=0; i<5; i++) {
+        Queue<Integer> queue = new LoopQueue<>(1);
+        for(int i=0; i<1; i++) {
             queue.enqueue(i);
             System.out.println(queue);
         }
         queue.dequeue();
+        queue.enqueue(5);
+        queue.enqueue(6);
         System.out.println(queue);
     }
 }
