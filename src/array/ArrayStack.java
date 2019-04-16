@@ -1,27 +1,29 @@
-public class ArrayQueue<E> implements Queue<E> {
+package array;
+
+public class ArrayStack<E> implements Stack<E> {
     private MyArray<E> array;
 
-    public ArrayQueue(int capacity) {
+    public ArrayStack(int capacity) {
         array = new MyArray<>(capacity);
     }
 
-    public ArrayQueue() {
+    public ArrayStack() {
         array = new MyArray<>();
     }
 
     @Override
-    public void enqueue(E e) {
+    public void push(E e) {
         array.addToLast(e);
     }
 
     @Override
-    public E dequeue() {
-        return array.removeFirst();
+    public E pop() {
+        return array.removeLast();
     }
 
     @Override
-    public E getFront() {
-        return array.get(0);
+    public E peek() {
+        return array.get(array.getSize()-1);
     }
 
     @Override
@@ -35,30 +37,20 @@ public class ArrayQueue<E> implements Queue<E> {
 
     @Override
     public boolean isEmpty() {
-        return getSize() == 0;
+        return array.getSize() == 0;
     }
 
     @Override
     public String toString() {
         StringBuilder result = new StringBuilder();
-        result.append(String.format("Queue size %d capacity %d : front [", getSize(), getCapacity()));
+        result.append(String.format("Stack size %d capacity %d : [", getSize(), getCapacity()));
         for(int i=0; i<getSize(); i++) {
             result.append(array.get(i));
             if(i != getSize()-1) {
                 result.append(",");
             }
         }
-        result.append("]");
+        result.append("]top");
         return result.toString();
-    }
-
-    public static void main(String[] args) {
-        Queue<Integer> queue = new ArrayQueue<>(20);
-        for(int i=0; i<5; i++) {
-            queue.enqueue(i);
-            System.out.println(queue);
-        }
-        queue.dequeue();
-        System.out.println(queue);
     }
 }

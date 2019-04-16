@@ -1,3 +1,7 @@
+package array;
+
+import array.MyArray;
+
 public class MyArrayStack<E> extends MyArray<E> {
 
     public MyArrayStack(int capacity) {
