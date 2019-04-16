@@ -40,6 +40,21 @@ public class MyLinkedList<E> {
         addToIndex(size, e);
     }
 
+    public E delete(int index) {
+        if(index<0 || index>size) {
+            throw new IllegalAccessError("index out of bounds");
+        }
+        Node pre = dummyHead;
+        for(int i=0; i<index; i++) {
+            pre = pre.next;
+        }
+        E result = (E)pre.next.getE();
+        pre.next = pre.next.next;
+        size--;
+
+        return result;
+    }
+
     public E get(int index) {
         if(index<0 || index>size) {
             throw new IllegalAccessError("index out of bounds");
@@ -103,5 +118,8 @@ public class MyLinkedList<E> {
         myLinkedList.set(3, 12);
         System.out.println(myLinkedList);
         System.out.println(myLinkedList.exist(3));
+
+        System.out.println(myLinkedList.delete(2));
+        System.out.println(myLinkedList);
     }
 }
