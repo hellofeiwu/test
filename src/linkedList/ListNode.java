@@ -43,15 +43,16 @@ public class ListNode {
         public ListNode removeElements(ListNode head, int val) {
             ListNode dummyHead = new ListNode(-1);
             dummyHead.next = head;
+            ListNode pre = dummyHead;
 
-            while(dummyHead.next != null) {
-                if(dummyHead.next.val == val) {
-                    dummyHead.next = dummyHead.next.next;
+            while(pre.next != null) {
+                if(pre.next.val == val) {
+                    pre.next = pre.next.next;
                 }else {
-                    dummyHead = dummyHead.next;
+                    pre = pre.next;
                 }
             }
-            return head;
+            return dummyHead.next;
         }
     }
 
