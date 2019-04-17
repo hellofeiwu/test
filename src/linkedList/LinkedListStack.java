@@ -1,5 +1,7 @@
 package linkedList;
 
+import array.ArrayStack;
+import array.Queue;
 import array.Stack;
 
 public class LinkedListStack<E> implements Stack<E> {
@@ -55,5 +57,20 @@ public class LinkedListStack<E> implements Stack<E> {
         }
         System.out.println(linkedListStack.pop());
         System.out.println(linkedListStack);
+
+        System.out.println(stackTest(new ArrayStack<>(), 100000));
+        System.out.println(stackTest(new LinkedListStack<>(), 100000));
+    }
+
+    public static double stackTest(Stack<Integer> stack, int num) {
+        long startTime = System.currentTimeMillis();
+        for(int i=0; i<num; i++) {
+            stack.push(i);
+        }
+        for(int i=0; i<num; i++){
+            stack.pop();
+        }
+        long endTime = System.currentTimeMillis();
+        return (endTime - startTime)/1000.0;
     }
 }
