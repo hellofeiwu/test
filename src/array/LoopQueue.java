@@ -96,32 +96,18 @@ public class LoopQueue<E> implements Queue<E> {
         queue.enqueue(6);
         System.out.println(queue);
 
-        System.out.println(ArrayQueueTest(100000));
-        System.out.println(LoopQueueTest(100000));
+        System.out.println(queueTest(new ArrayQueue<>(), 100000));
+        System.out.println(queueTest(new LoopQueue<>(), 100000));
 
     }
 
-    public static double ArrayQueueTest(int num) {
-        Queue<Integer> arrayQueue = new ArrayQueue<>();
+    public static double queueTest(Queue<Integer> queue, int num) {
         long startTime = System.currentTimeMillis();
         for(int i=0; i<num; i++) {
-            arrayQueue.enqueue(i);
+            queue.enqueue(i);
         }
         for(int i=0; i<num; i++){
-            arrayQueue.dequeue();
-        }
-        long endTime = System.currentTimeMillis();
-        return (endTime - startTime)/1000.0;
-    }
-
-    public static double LoopQueueTest(int num) {
-        Queue<Integer> loopQueue = new LoopQueue<>();
-        long startTime = System.currentTimeMillis();
-        for(int i=0; i<num; i++) {
-            loopQueue.enqueue(i);
-        }
-        for(int i=0; i<num; i++){
-            loopQueue.dequeue();
+            queue.dequeue();
         }
         long endTime = System.currentTimeMillis();
         return (endTime - startTime)/1000.0;
