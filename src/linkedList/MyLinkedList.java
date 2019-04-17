@@ -48,11 +48,12 @@ public class MyLinkedList<E> {
         for(int i=0; i<index; i++) {
             pre = pre.next;
         }
-        E result = (E)pre.next.getE();
-        pre.next = pre.next.next;
+        Node result = pre.next;
+        pre.next = result.next;
+        result.next = null; // for JVM to clean this memory space
         size--;
 
-        return result;
+        return (E)result.getE();
     }
 
     public E get(int index) {
