@@ -56,6 +56,14 @@ public class MyLinkedList<E> {
         return (E)result.getE();
     }
 
+    public E deleteFirst() {
+        return delete(0);
+    }
+
+    public E deleteLast() {
+        return delete(size-1);
+    }
+
     public E get(int index) {
         if(index<0 || index>size) {
             throw new IllegalAccessError("index out of bounds");
