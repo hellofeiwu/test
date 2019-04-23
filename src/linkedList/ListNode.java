@@ -56,8 +56,51 @@ public class ListNode {
         }
     }
 
+    static class Solution3 {
+        public ListNode removeElements(ListNode head, int val) {
+            while (head != null && head.val == val){
+                head = head.next;
+            }
+            ListNode pre = head;
+
+            if(pre.next != null) {
+                if(pre.next.val == val) {
+                    pre.next = pre.next.next;
+                }else {
+                    pre = pre.next;
+                }
+                if(pre.next != null) {
+                    removeElements(pre.next, val);
+                }
+            }
+
+            return head;
+        }
+    }
+
+    static class Solution4 {
+        public ListNode removeElements(ListNode head, int val) {
+            ListNode dummyHead = new ListNode(-1);
+            dummyHead.next = head;
+            return remove(dummyHead, val).next;
+        }
+
+        private ListNode remove(ListNode node, int val) {
+            ListNode pre = node;
+            if(pre.next != null) {
+                if(pre.next.val == val) {
+                    pre.next = pre.next.next;
+                }else {
+                    pre = pre.next;
+                }
+                remove(pre, val);
+            }
+            return node;
+        }
+    }
+
     public static void main(String[] args) {
-        int[] arr = {6,6,6,3,4,5,6};
+        int[] arr = {7,6,6,6,3,4,5,6};
         ListNode head = new ListNode(arr[0]);
         ListNode cur = head;
         for(int i=1; i<arr.length; i++) {
@@ -66,7 +109,7 @@ public class ListNode {
         }
 
         System.out.println(head);
-        System.out.println((new Solution2()).removeElements(head, 6));
+        System.out.println((new Solution4()).removeElements(head, 6));
     }
 }
 
