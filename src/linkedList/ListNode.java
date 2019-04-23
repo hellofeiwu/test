@@ -100,22 +100,36 @@ public class ListNode {
     }
 
     static class Solution5 {
-        public ListNode removeElements(ListNode head, int val) {
+        public ListNode removeElements(ListNode head, int val, int depth) {
+            System.out.println(generateDepthStr(depth) + " come in: " + head);
             if(head == null) {
+                System.out.println(generateDepthStr(depth) + " return: " + head);
                 return head;
             }
-            ListNode res = removeElements(head.next, val);
+            ListNode res = removeElements(head.next, val, depth+1);
+            System.out.println(generateDepthStr(depth) + " after remove: " + res);
             if(head.val == val) {
+                System.out.println(generateDepthStr(depth) + " return: " + res);
                 return res;
             }else {
                 head.next = res;
+                System.out.println(generateDepthStr(depth) + " return: " + head);
                 return head;
             }
+        }
+
+        public String generateDepthStr(int depth) {
+            StringBuilder res = new StringBuilder();
+            for(int i=0; i<depth; i++) {
+                res.append("-");
+            }
+            res.append(depth);
+            return res.toString();
         }
     }
 
     public static void main(String[] args) {
-        int[] arr = {7,6,6,6,3,4,5,6};
+        int[] arr = {7,6,3};
         ListNode head = new ListNode(arr[0]);
         ListNode cur = head;
         for(int i=1; i<arr.length; i++) {
@@ -124,7 +138,7 @@ public class ListNode {
         }
 
         System.out.println(head);
-        System.out.println((new Solution5()).removeElements(head, 6));
+        System.out.println((new Solution5()).removeElements(head, 6, 0));
     }
 }
 
